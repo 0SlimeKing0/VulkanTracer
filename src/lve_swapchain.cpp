@@ -30,7 +30,7 @@ LveSwapChain::LveSwapChain(LveDevice &deviceRef, VkExtent2D extent)
   CreateSyncObjects();
 }
 
-LveSwapChain::~LveSwapChain() {
+void LveSwapChain::CleanUp() {
   for (auto imageView : swapChainImageViews) {
     vkDestroyImageView(device.Device(), imageView, nullptr);
   }

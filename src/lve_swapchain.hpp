@@ -12,10 +12,11 @@ class LveSwapChain {
   static constexpr int MAX_FRAMES_IN_FLIGHT = 2;
 
   LveSwapChain(LveDevice &deviceRef, VkExtent2D windowExtent);
-  ~LveSwapChain();
 
   LveSwapChain(const LveSwapChain &) = delete;
   void operator=(const LveSwapChain &) = delete;
+
+  void CleanUp();
 
   VkFramebuffer GetFrameBuffer(int index) { return swapChainFramebuffers[index]; }
   VkRenderPass GetRenderPass() { return renderPass; }
