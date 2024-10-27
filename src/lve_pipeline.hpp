@@ -15,7 +15,6 @@ struct PipelineConfigInfo {
   VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo{};
   VkPipelineRasterizationStateCreateInfo rasterizationInfo{};
   VkPipelineMultisampleStateCreateInfo multisampleInfo{};
-  VkPipelineDepthStencilStateCreateInfo depthStencilInfo{};
   VkPipelineLayout pipelineLayout = nullptr;
   VkRenderPass renderPass = nullptr;
   uint32_t subpass = 0;

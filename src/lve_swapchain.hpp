@@ -30,7 +30,6 @@ class LveSwapChain {
   float ExtentAspectRatio() {
     return static_cast<float>(swapChainExtent.width) / static_cast<float>(swapChainExtent.height);
   }
-  VkFormat FindDepthFormat();
 
   VkResult AcquireNextImage(uint32_t *imageIndex);
   VkResult SubmitCommandBuffers(const VkCommandBuffer *buffers, uint32_t *imageIndex);
@@ -38,7 +37,6 @@ class LveSwapChain {
  private:
   void CreateSwapChain();
   void CreateImageViews();
-  void CreateDepthResources();
   void CreateRenderPass();
   void CreateFramebuffers();
   void CreateSyncObjects();
@@ -56,9 +54,6 @@ class LveSwapChain {
   std::vector<VkFramebuffer> swapChainFramebuffers;
   VkRenderPass renderPass;
 
-  std::vector<VkImage> depthImages;
-  std::vector<VkDeviceMemory> depthImageMemorys;
-  std::vector<VkImageView> depthImageViews;
   std::vector<VkImage> swapChainImages;
   std::vector<VkImageView> swapChainImageViews;
 

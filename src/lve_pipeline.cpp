@@ -121,7 +121,6 @@ void LvePipeline::CreateGraphicsPipeline(
   pipelineInfo.pRasterizationState = &configInfo.rasterizationInfo;
   pipelineInfo.pMultisampleState = &configInfo.multisampleInfo;
   pipelineInfo.pColorBlendState = &colorBlendInfo;
-  pipelineInfo.pDepthStencilState = &configInfo.depthStencilInfo;
   pipelineInfo.pDynamicState = nullptr;
 
   pipelineInfo.layout = configInfo.pipelineLayout;
@@ -161,7 +160,7 @@ PipelineConfigInfo LvePipeline::DefaultPipelineConfigInfo(uint32_t width, uint32
   PipelineConfigInfo configInfo{};
 
   configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
-  configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+  configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP;
   configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;
 
   configInfo.viewport.x = 0.0f;
@@ -193,17 +192,6 @@ PipelineConfigInfo LvePipeline::DefaultPipelineConfigInfo(uint32_t width, uint32
   configInfo.multisampleInfo.pSampleMask = nullptr;             // Optional
   configInfo.multisampleInfo.alphaToCoverageEnable = VK_FALSE;  // Optional
   configInfo.multisampleInfo.alphaToOneEnable = VK_FALSE;       // Optional
-
-  configInfo.depthStencilInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
-  configInfo.depthStencilInfo.depthTestEnable = VK_TRUE;
-  configInfo.depthStencilInfo.depthWriteEnable = VK_TRUE;
-  configInfo.depthStencilInfo.depthCompareOp = VK_COMPARE_OP_LESS;
-  configInfo.depthStencilInfo.depthBoundsTestEnable = VK_FALSE;
-  configInfo.depthStencilInfo.minDepthBounds = 0.0f;  // Optional
-  configInfo.depthStencilInfo.maxDepthBounds = 1.0f;  // Optional
-  configInfo.depthStencilInfo.stencilTestEnable = VK_FALSE;
-  configInfo.depthStencilInfo.front = {};  // Optional
-  configInfo.depthStencilInfo.back = {};   // Optional
 
   return configInfo;
 }
