@@ -8,7 +8,6 @@
 #include <vector>
 
 namespace lve {
-
 struct PipelineConfigInfo {
   VkViewport viewport;
   VkRect2D scissor;
@@ -29,7 +28,7 @@ class LvePipeline {
       const PipelineConfigInfo& configInfo);
 
   LvePipeline(const LvePipeline&) = delete;
-  void operator=(const LvePipeline&) = delete;
+  LvePipeline &operator=(const LvePipeline&) = delete;
 
   void Bind(VkCommandBuffer commandBuffer);
   void CleanUp();
@@ -39,7 +38,7 @@ class LvePipeline {
   static std::vector<char> ReadFile(const std::string& filepath);
 
   void CreateGraphicsPipeline(
-      const std::string& vertFilepath,
+     const std::string& vertFilepath,
       const std::string& fragFilepath,
       const PipelineConfigInfo& configInfo);
 

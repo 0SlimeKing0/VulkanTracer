@@ -14,7 +14,7 @@ class LveSwapChain {
   LveSwapChain(LveDevice &deviceRef, VkExtent2D windowExtent);
 
   LveSwapChain(const LveSwapChain &) = delete;
-  void operator=(const LveSwapChain &) = delete;
+  LveSwapChain &operator=(const LveSwapChain &) = delete;
 
   void CleanUp();
 
